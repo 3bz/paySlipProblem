@@ -35,48 +35,62 @@ public class Customer {
         setEndDate(scn.nextLine());
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    //GET
+    public String getName() { return name; }
 
     public String getSurname() {
         return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public int getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
     public int getSuperRate() {
         return superRate;
-    }
-
-    public void setSuperRate(int superRate) {
-        this.superRate = superRate;
     }
 
     public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
     public String getEndDate() {
         return endDate;
+    }
+
+    public int getMySuper() {
+        return mySuper;
+    }
+
+    public int getNetIncome() {
+        return netIncome;
+    }
+
+    public int getGrossIncome() {
+        return grossIncome;
+    }
+
+    public int getIncomeTax() {
+        return incomeTax;
+    }
+
+    //SET
+    public void setName(String name) { this.name = name; }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public void setSuperRate(int superRate) {
+        this.superRate = superRate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public void setEndDate(String endDate) {
@@ -91,27 +105,10 @@ public class Customer {
         this.netIncome = netIncome;
     }
 
-    public int getMySuper() {
-        return mySuper;
+    public void setGrossIncome(int grossIncome) { this.grossIncome = grossIncome;
     }
-
-    public int getNetIncome() {
-        return netIncome;
-    }
-
-    public void setGrossIncome(int grossIncome) {
-        this.grossIncome = grossIncome;
-    }
-
     public void setIncomeTax(int incomeTax) {
         this.incomeTax = incomeTax;
     }
 
-    public int getGrossIncome() {
-        return grossIncome;
-    }
-
-    public int getIncomeTax() {
-        return incomeTax;
-    }
 }

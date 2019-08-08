@@ -10,9 +10,9 @@ public class Program {
 
         System.out.println("Welcome to the payslip generator!\n");
         myCustomer.initCustomer();
-        //Calculator myCalc = new Calculator(myCustomer);
-        //myCalc.calculatePayslip();
-        Calculator.calculatePayslip(myCustomer);
-        Payslip.printSlip(myCustomer);
+        Calculator myCalc = new Calculator(myCustomer);
+        myCalc.calculatePayslip();
+        Payslip myPayslip = new Payslip(myCustomer);
+        myPayslip.printSlip();
     }
 }

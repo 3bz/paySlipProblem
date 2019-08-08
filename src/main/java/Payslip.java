@@ -1,12 +1,12 @@
 public class Payslip {
-    private Customer myCustomer;
+    private static Customer myCustomer;
 
     public Payslip(Customer aCustomer)
     {
         myCustomer = aCustomer;
     }
 
-    public static void printSlip(Customer myCustomer)
+    public static void printSlip()
     {
         System.out.println("Your payslip has been generated:\n");
         System.out.println("Name: " + myCustomer.getName() + " " + myCustomer.getSurname());
