@@ -30,7 +30,7 @@ public class Calculator {
             return (int) Math.round( (3572 + (aSalary - 37000) * .325) /MONTHS );
         if (aSalary >= 87001 && aSalary <= 180000)
             return (int) Math.round( (19882 + (aSalary - 87000) * .37) /MONTHS );
-        if (aSalary > 180001)
+        if (aSalary >= 180001)
             return (int) Math.round( (54232 + (aSalary - 180000) * .45) /MONTHS );
         else
             return 0;
@@ -45,5 +45,4 @@ public class Calculator {
     {
         return (int) Math.round( (aGross * (aSuper) /100) );
     }
-
 }

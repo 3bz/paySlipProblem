@@ -73,7 +73,7 @@ public class Customer {
     public void setSurname(String surname) {
         if ( !(Pattern.matches("[a-zA-Z]+", surname)) ) {
             System.out.println("Please enter a valid surname, containing only alphabetic characters: ");
-            setName((scn.nextLine()));
+            setSurname((scn.nextLine()));
         }
         this.surname = surname;
     }
@@ -104,21 +104,22 @@ public class Customer {
     public void setStartDate(String startDate) {
         if ( !(checkValidDate(startDate)) )
             setStartDate(scn.nextLine());
-
-        this.startDate = startDate;
+        else
+            this.startDate = startDate;
     }
 
     public void setEndDate(String endDate) {
         if ( !(checkValidDate(endDate)) )
             setEndDate(scn.nextLine());
-
-        this.endDate = endDate;
+        else
+            this.endDate = endDate;
     }
 
     private boolean checkValidDate(String aDate) {
         boolean haveMatch = false;
         String[] splitDayAndMonth = aDate.split("\\s");
-        if ( !(Pattern.matches("[ \t]+", aDate)) && splitDayAndMonth.length == 2 )      //add gate for NumberNumberSpaceString
+        if ( !(Pattern.matches("[ \t]+", aDate)) && splitDayAndMonth.length == 2
+                && Pattern.matches("^[1-3]?[0-9]$", (splitDayAndMonth[0])) )      //add gate for NumberNumberSpaceString
         {
             for (monthsInYear m : monthsInYear.values()) {
                 if (Pattern.matches(String.valueOf(m), splitDayAndMonth[1].toUpperCase()))
