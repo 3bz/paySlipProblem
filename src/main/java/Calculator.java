@@ -41,9 +41,9 @@ public class Calculator {
         return Math.round( aGross - aTax );
     }
 
-    private static int calcSuper(int aGross, int aSuper)
+    private static int calcSuper(int aGross, double aSuper)
     {
-        return Math.round( (aGross * (aSuper) /100) );
+        return (int) Math.round( (aGross * (aSuper) /100) );
     }
 
 }

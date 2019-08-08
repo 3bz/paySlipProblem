@@ -1,10 +1,11 @@
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Customer {
     private String name;
     private String surname;
     private int salary;
-    private int superRate;
+    private double superRate;
     private String startDate;
     private String endDate;
     private int grossIncome;
@@ -12,6 +13,7 @@ public class Customer {
     private int netIncome;
     private int mySuper;
 
+    private static Scanner scn = new Scanner(System.in);
 
     public Customer()
     {
@@ -19,16 +21,14 @@ public class Customer {
 
     public void initCustomer()
     {
-        Scanner scn = new Scanner(System.in);
-
         System.out.println("Please input your name: ");
         setName(scn.nextLine());
         System.out.println("Please input your surname: ");
         setSurname(scn.nextLine());
         System.out.println("Please enter your annual salary: ");
-        setSalary(Integer.parseInt(scn.nextLine()));
+        setSalary(scn.nextLine());
         System.out.println("Please enter your super rate: ");
-        setSuperRate(Integer.parseInt(scn.nextLine()));
+        setSuperRate(scn.nextLine());
         System.out.println("Please enter your payment start date: ");
         setStartDate(scn.nextLine());
         System.out.println("Please enter your payment end date: ");
@@ -46,7 +46,7 @@ public class Customer {
         return salary;
     }
 
-    public int getSuperRate() {
+    public double getSuperRate() {
         return superRate;
     }
 
@@ -75,18 +75,43 @@ public class Customer {
     }
 
     //SET
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        if ( !(Pattern.matches("[a-zA-Z]+", name)) ) {
+            System.out.println("Please enter a valid name, containing only alphabetic characters: ");
+            setName((scn.nextLine()));
+        }
+        this.name = name;
+    }
 
     public void setSurname(String surname) {
+        if ( !(Pattern.matches("[a-zA-Z]+", surname)) ) {
+            System.out.println("Please enter a valid surname, containing only alphabetic characters: ");
+            setName((scn.nextLine()));
+        }
         this.surname = surname;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setSalary(String salary) {
+        try {
+            this.salary = Integer.parseInt(salary);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Please input a valid salary figure: ");
+            setSalary((scn.nextLine()));
+        }
     }
 
-    public void setSuperRate(int superRate) {
-        this.superRate = superRate;
+    public void setSuperRate(String superRate) {
+        try {
+            double result = Double.parseDouble(superRate);
+            this.superRate = result;
+        }
+        catch (Exception e)
+        {
+            System.out.println("Please input a valid super rate: ");
+            setSuperRate( (scn.nextLine()) );
+        }
     }
 
     public void setStartDate(String startDate) {
