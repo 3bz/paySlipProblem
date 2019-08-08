@@ -37,39 +37,26 @@ public class Customer {
 
     //GET
     public String getName() { return name; }
-
     public String getSurname() {
         return surname;
     }
-
     public int getSalary() {
         return salary;
     }
-
-    public double getSuperRate() {
-        return superRate;
-    }
-
+    public double getSuperRate() { return superRate; }
     public String getStartDate() {
         return startDate;
     }
-
     public String getEndDate() {
         return endDate;
     }
-
-    public int getMySuper() {
-        return mySuper;
-    }
-
+    public int getMySuper() { return mySuper; }
     public int getNetIncome() {
         return netIncome;
     }
-
     public int getGrossIncome() {
         return grossIncome;
     }
-
     public int getIncomeTax() {
         return incomeTax;
     }
@@ -115,11 +102,33 @@ public class Customer {
     }
 
     public void setStartDate(String startDate) {
+        if ( !(checkValidDate(startDate)) )
+            setStartDate(scn.nextLine());
+
         this.startDate = startDate;
     }
 
     public void setEndDate(String endDate) {
+        if ( !(checkValidDate(endDate)) )
+            setEndDate(scn.nextLine());
+
         this.endDate = endDate;
+    }
+
+    private boolean checkValidDate(String aDate) {
+        boolean haveMatch = false;
+        String[] splitDayAndMonth = aDate.split("\\s");
+        if ( !(Pattern.matches("[ \t]+", aDate)) && splitDayAndMonth.length == 2 )      //add gate for NumberNumberSpaceString
+        {
+            for (monthsInYear m : monthsInYear.values()) {
+                if (Pattern.matches(String.valueOf(m), splitDayAndMonth[1].toUpperCase()))
+                    haveMatch = true;
+            }
+        }
+        if (!haveMatch)
+            System.out.println("Please enter a valid date, format '(x)x Month': ");
+
+        return haveMatch;
     }
 
     public void setMySuper(int mySuper) {
