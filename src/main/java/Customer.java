@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Customer {
@@ -13,26 +12,8 @@ public class Customer {
     private int netIncome;
     private int mySuper;
 
-    private static Scanner scn = new Scanner(System.in);
-
     public Customer()
     {
-    }
-
-    public void initCustomer()
-    {
-        System.out.println("Please input your name: ");
-        setName(scn.nextLine());
-        System.out.println("Please input your surname: ");
-        setSurname(scn.nextLine());
-        System.out.println("Please enter your annual salary: ");
-        setSalary(scn.nextLine());
-        System.out.println("Please enter your super rate: ");
-        setSuperRate(scn.nextLine());
-        System.out.println("Please enter your payment start date: ");
-        setStartDate(scn.nextLine());
-        System.out.println("Please enter your payment end date: ");
-        setEndDate(scn.nextLine());
     }
 
     //GET
@@ -62,34 +43,37 @@ public class Customer {
     }
 
     //SET
-    public void setName(String name) {
+    public boolean setName(String name) {
         if ( !(Pattern.matches("[a-zA-Z]+", name)) ) {
             System.out.println("Please enter a valid name, containing only alphabetic characters: ");
-            setName((scn.nextLine()));
+            return false;
         }
         this.name = name;
+        return true;
     }
 
-    public void setSurname(String surname) {
+    public boolean setSurname(String surname) {
         if ( !(Pattern.matches("[a-zA-Z]+", surname)) ) {
             System.out.println("Please enter a valid surname, containing only alphabetic characters: ");
-            setSurname((scn.nextLine()));
+            return false;
         }
         this.surname = surname;
+        return true;
     }
 
-    public void setSalary(String salary) {
+    public boolean setSalary(String salary) {
         try {
             this.salary = Integer.parseInt(salary);
         }
         catch (Exception e)
         {
             System.out.println("Please input a valid salary figure: ");
-            setSalary((scn.nextLine()));
+            return false;
         }
+        return true;
     }
 
-    public void setSuperRate(String superRate) {
+    public boolean setSuperRate(String superRate) {
         try {
             double result = Double.parseDouble(superRate);
             this.superRate = result;
@@ -97,22 +81,27 @@ public class Customer {
         catch (Exception e)
         {
             System.out.println("Please input a valid super rate: ");
-            setSuperRate( (scn.nextLine()) );
+            return false;
+        }
+        return true;
+    }
+
+    public boolean setStartDate(String startDate) {
+        if ( !(checkValidDate(startDate)) )
+            return false;
+        else {
+            this.startDate = startDate;
+            return true;
         }
     }
 
-    public void setStartDate(String startDate) {
-        if ( !(checkValidDate(startDate)) )
-            setStartDate(scn.nextLine());
-        else
-            this.startDate = startDate;
-    }
-
-    public void setEndDate(String endDate) {
+    public boolean setEndDate(String endDate) {
         if ( !(checkValidDate(endDate)) )
-            setEndDate(scn.nextLine());
-        else
+            return false;
+        else {
             this.endDate = endDate;
+            return true;
+        }
     }
 
     private boolean checkValidDate(String aDate) {
