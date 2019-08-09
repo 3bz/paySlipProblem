@@ -108,7 +108,7 @@ public class Customer {
         boolean haveMatch = false;
         String[] splitDayAndMonth = aDate.split("\\s");
         if ( !(Pattern.matches("[ \t]+", aDate)) && splitDayAndMonth.length == 2
-                && Pattern.matches("^[1-3]?[0-9]$", (splitDayAndMonth[0])) )      //add gate for NumberNumberSpaceString
+                && Pattern.matches("^[1-3]?[0-9]$", (splitDayAndMonth[0])) )
         {
             for (monthsInYear m : monthsInYear.values()) {
                 if (Pattern.matches(String.valueOf(m), splitDayAndMonth[1].toUpperCase()))
